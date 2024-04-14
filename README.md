@@ -39,13 +39,14 @@ drawio
 <details>
 <summary>ТЫКНИ</summary>
 
-![topology](https://github.com/beglaz/ssa2004demo/assets/89695370/5447aa7-573-4f55-b19-bf314e30f1ec)
+![topology](https://github.com/be2glaz/demoSSA/assets/89695370/51869b97-0f01-4894-be7b-8880d9043859)
 
-![tab_1](https://github.com/beglaz/ssa2004demo/assets/89695370/a48d854b-784-4f67-8318-ce1c1a6ead)
+![tab_1](https://github.com/be2glaz/demoSSA/assets/89695370/db56b436-90ba-4555-9e80-40e25aa7e930)
 
-![ip_adr_tabl()](https://github.com/beglaz/ssa2004demo/assets/89695370/91c000bb-9a96-4017-8ee9-86e59870074c)
+![ip_adr_tabl(2)](https://github.com/be2glaz/demoSSA/assets/89695370/54fb9f81-34f2-41df-9df3-021bf54f87fd)
 
-![l3_topologiya_()](https://github.com/beglaz/ssa2004demo/assets/89695370/3ae1161-db7c-467-8191-98a60cd43ef)
+![l3_topologiya_(2)](https://github.com/be2glaz/demoSSA/assets/89695370/7c06c5fe-8100-4fa4-b5c0-326c8ba4f106)
+
 
 </details>
 
