@@ -2,6 +2,8 @@
 
 ### Общая информация
 
+<details>
+<summary>ТЫКНИ</summary>
 
 Оценочные материалы демонстрационного экзамена 2024 года 09.02.06 «Сетевое и системное администрирование»
 
@@ -28,10 +30,28 @@ drawio
     
 )
 
+</details>
+
+# КАРТИНКИИИ
+
+<details>
+<summary>ТЫКНИ</summary>
+
+![topology](https://github.com/be2glaz/ssa2004demo/assets/89695370/54472aa7-2573-4f55-b219-bf314e30f1ec)
+
+![tab_1](https://github.com/be2glaz/ssa2004demo/assets/89695370/a48d854b-7284-4f67-8318-ce1c1a6ea22d)
+
+![ip_adr_tabl(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/91c000bb-9a96-4017-8ee9-86e59870074c)
+
+![l3_topologiya_(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/3a2e1161-db7c-4627-8191-98a602cd43ef)
+
+</details>
+
 # Топология
 
     
 ![topology](https://github.com/be2glaz/ssa2004demo/assets/89695370/54472aa7-2573-4f55-b219-bf314e30f1ec)
+
 
 
 1. Выполните базовую настройку всех устройств:
@@ -51,16 +71,24 @@ d. Пул адресов для сети офиса HQ - не более 64
 
     [root@localhost ~]# hostnamectl set-hostname <NAME>
     [root@localhost ~]# exec bash
-> [!NOTE]
+> [!TIP]
 >    NAME - имя устройства
+> 
 >    exec bash — перезапуск оболочки bash для отображения нового хостнейма
+> 
 >    Для устройств BR-SRV и CLI желательно сразу установить полное доменное имя. Потребуется для ввода этих машин в домен во второй части задания.
 >    Например:
+> 
 >    ISP: isp
+> 
 >    CLI: cli.hq.work
+> 
 >    HQ-R: hq-r.hq.work
+> 
 >    HQ-SRV: hq-srv.hq.work
+> 
 >    BR-R: br-r.branch.work
+> 
 >    BR-SRV: br-srv.branch.wor
 
 Пример:
