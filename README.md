@@ -959,4 +959,66 @@ BR-R
 </details>  
 </details>  
 
+## 1.8.Настройте контроль доступа до HQ-SRV по SSH со всех устройств, кроме CLI.
 
+<details>
+<summary>ТЫКНИ</summary>
+
+### Задание
+#### Настройте контроль доступа до HQ-SRV по SSH со всех устройств, кроме CLI.
+
+### Решение
+#### Настройка nftables на HQ-SRV
+Установка nftables
+
+    # dnf install -y nftables
+Создаем и открываем файл
+
+    # nano /etc/nftables/hq-srv.nft
+> Запрещаем подключение CLI к HQ-SRV по IPv4 и IPv6
+
+Прописываем следующие строки
+
+    table inet filter {
+                chain input {
+                type filter hook input priority filter; policy accept;
+                ip saddr 3.3.3.2 tcp dport 2222 counter reject
+                ip saddr 4.4.4.0/30 tcp dport 2222 counter reject
+                ip6 saddr 2024:ab:cd:3::/64 tcp dport 2222 counter reject
+                ip6 saddr 2024:ab:cd:4::/64 tcp dport 2222 counter reject
+                }
+    }
+Включаем использование данного файла в ```sysconfig```
+
+    # nano /etc/sysconfig/nftables.conf
+Ниже строки начинающейся на ```include```, прописываем строку
+
+    include "/etc/nftables/hq-srv.nft"
+Запуск и добавление в автозагрузку сервиса nftables
+
+    # systemctl enable --now nftables
+
+### Проверка подключение к HQ-SRV по SSH
+
+<details>
+<summary>ТЫКНИ</summary>
+
+#### Подключение с HQ-R
+
+![8-1](https://github.com/be2glaz/ssa2004demo/assets/89695370/1eb28601-9ac7-441a-849a-9e7de9460772)
+
+#### Подключение с BR-R
+
+![8-2](https://github.com/be2glaz/ssa2004demo/assets/89695370/661a13e0-84c6-4aff-b7a0-93a029e3d6b7)
+
+#### Подключение с BR-SRV
+
+![8-3](https://github.com/be2glaz/ssa2004demo/assets/89695370/cd25bbae-06fb-43cd-b602-c9340497f4c9)
+
+#### Подключение с CLI
+
+![8-4](https://github.com/be2glaz/ssa2004demo/assets/89695370/53bff2a7-7d11-4f20-9373-5d77f60e8033)
+
+
+</details>
+</details>
