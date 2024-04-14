@@ -37,13 +37,13 @@ drawio
 <details>
 <summary>ТЫКНИ</summary>
 
-![topology](https://github.com/be2glaz/ssa2004demo/assets/89695370/54472aa7-2573-4f55-b219-bf314e30f1ec)
+![topology](https://github.com/beglaz/ssa004demo/assets/89695370/5447aa7-573-4f55-b19-bf314e30f1ec)
 
-![tab_1](https://github.com/be2glaz/ssa2004demo/assets/89695370/a48d854b-7284-4f67-8318-ce1c1a6ea22d)
+![tab_1](https://github.com/beglaz/ssa004demo/assets/89695370/a48d854b-784-4f67-8318-ce1c1a6ead)
 
-![ip_adr_tabl(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/91c000bb-9a96-4017-8ee9-86e59870074c)
+![ip_adr_tabl()](https://github.com/beglaz/ssa004demo/assets/89695370/91c000bb-9a96-4017-8ee9-86e59870074c)
 
-![l3_topologiya_(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/3a2e1161-db7c-4627-8191-98a602cd43ef)
+![l3_topologiya_()](https://github.com/beglaz/ssa004demo/assets/89695370/3ae1161-db7c-467-8191-98a60cd43ef)
 
 </details>
 
@@ -52,7 +52,7 @@ drawio
 <details>
 <summary>ТЫКНИ</summary>
     
-![topology](https://github.com/be2glaz/ssa2004demo/assets/89695370/54472aa7-2573-4f55-b219-bf314e30f1ec)
+![topology](https://github.com/beglaz/ssa004demo/assets/89695370/5447aa7-573-4f55-b19-bf314e30f1ec)
 
 1. Выполните базовую настройку всех устройств:
 a. Присвоить имена в соответствии с топологией
@@ -60,10 +60,10 @@ b. Рассчитать IP-адресацию IPv4 и IPv6. Необходимо
 c. Пул адресов для сети офиса BRANCH - не более 16
 d. Пул адресов для сети офиса HQ - не более 64
 
-![tab_1](https://github.com/be2glaz/ssa2004demo/assets/89695370/a48d854b-7284-4f67-8318-ce1c1a6ea22d)
+![tab_1](https://github.com/beglaz/ssa004demo/assets/89695370/a48d854b-784-4f67-8318-ce1c1a6ead)
 
 
-![ip_adr_tabl(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/91c000bb-9a96-4017-8ee9-86e59870074c)
+![ip_adr_tabl()](https://github.com/beglaz/ssa004demo/assets/89695370/91c000bb-9a96-4017-8ee9-86e59870074c)
 
 
 а. Присвоить имена в соответствии с топологией
@@ -88,7 +88,7 @@ exec bash — перезапуск оболочки bash для отображе
 
 Пример:
 
-![1-1](https://github.com/be2glaz/ssa2004demo/assets/89695370/cb447ca2-2e79-496b-8643-97fe1d349fe8)
+![1-1](https://github.com/beglaz/ssa004demo/assets/89695370/cb447ca-e79-496b-8643-97fe1d349fe8)
 
 
 b. Рассчитать IP-адресацию IPv4 и IPv6. Необходимо заполнить таблицу №1, чтобы эксперты могли проверить ваше рабочее место.
@@ -332,7 +332,7 @@ BR-SRV - 1 интерфейс в сторону BR-R
 
 </details>
 
-## 2. Настроить внутреннюю динамическую маршрутизацию по средствам FRR. Выбрать и обосновать выбор протокола динамической маршрутизации из расчёта, что в дальнейшем сеть будет масштабироваться.
+## 1.2. Настроить внутреннюю динамическую маршрутизацию по средствам FRR. Выбрать и обосновать выбор протокола динамической маршрутизации из расчёта, что в дальнейшем сеть будет масштабироваться.
 
 <details>
 <summary>ТЫКНИ</summary>
@@ -701,6 +701,117 @@ BR-R
 
 </details>
 </details>
+
+
+## 1.4.Настроить локальные учётные записи на всех устройствах в соответствии с таблицей 2
+
+<details>
+<summary>ТЫКНИ</summary>
+
+### Задание
+#### Настройте локальные учётные записи на всех устройствах в соответствии с таблицей 2.
+
+![tab_2](https://github.com/be2glaz/ssa2004demo/assets/89695370/7abeabe5-f454-4c82-897f-dea9b34ec90d)
+
+### Решение
+> Для добавления нового пользователя используйте команды useradd и passwd.
+
+> Параметр ```-c``` позволяет добавлять пользовательские комментарии, такие как полное имя пользователя, номер телефона и т. д. в файл /etc/passwd. Комментарий может быть добавлен одной строкой без пробелов.
+
+Команда добавит пользователя «admin» и вставит его полное имя, Administrator, в поле комментария.
+
+    # useradd -c "Admin" admin -U
+    # passwd admin
+> - ```admin``` - имя пользователя
+> - ```-c``` Admin любая текстовая строка. Используется как поле для имени и фамилии пользователя
+> - ```-U``` - cоздание группы с тем же именем, что и у пользователя, и добавление пользователь в эту группу
+> - ```passwd admin``` - задать пароль пользователю
+
+> Если имя пользователя состоит из двух слов – пишется через ```тире``` или ```подчеркивание```
+
+##### Добавление пользователей
+**HQ-R**
+
+    # useradd -c "Admin" admin -U
+    # passwd admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+Создание пользователя ```Network admin```
+
+    # useradd -c "Network admin" network_admin -U
+    # passwd network_admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+**HQ-SRV**
+
+Создание пользователя ```Admin```
+
+    # useradd -c "Admin" admin -U
+    # passwd admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+**BR-R**
+
+Создание пользователя ```Branch admin```
+
+    # useradd -c "Branch admin" branch_admin -U
+    # passwd branch_admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+Создание пользователя ```Network admin```
+
+    # useradd -c "Network admin" network_admin -U
+    # passwd network_admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+**BR-SRV**
+
+Создание пользователя ```Branch admin```
+
+    # useradd -c "Branch admin" branch_admin -U
+    # passwd branch_admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+Создание пользователя ```Network admin```
+
+    # useradd -c "Network admin" network_admin -U
+    # passwd network_admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+**CLI**
+
+```Вариант -1```
+Создание пользователя ```Admin```
+
+    # useradd -c "Admin" admin -U
+    # passwd admin
+    < вводим пароль пользователя >
+    < повторяем ввод паря >
+```Вариант -2```
+![useradd_-_gif](https://github.com/be2glaz/ssa2004demo/assets/89695370/fbd4ee89-25e9-41b3-8e0c-971087d5f737)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details>
+
 
 
 
