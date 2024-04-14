@@ -3,10 +3,9 @@
 ### Общая информация
 
 
-[Оценочные материалы демонстрационного экзамена 2024 года 09.02.06 «Сетевое и системное администрирование»](https://bom.firpo.ru/)
+Оценочные материалы демонстрационного экзамена 2024 года 09.02.06 «Сетевое и системное администрирование»
 
-
-
+    https://bom.firpo.ru/
 
 КОД 09.02.06-1-2024 Том 1
 
@@ -14,24 +13,18 @@
 
 [Задание Модуль 1](http://wiki.prcit.ru/Demo-2024/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C-1)
 
-    
-
-
 В данном варианте решения предполагается использовать RedOS 7.3.4 Сервер минимальный и RedOS 7.3.4 Рабочая станция
 
     https://files.red-soft.ru/redos/7.3/x86_64/iso/redos-MUROM-7.3.4-20231220.0-Everything-x86_64-DVD1.iso
+калькулятор ipv4
 
-    
+    https://ipmeter.ru/
+калькулятор ipv6
 
-[калькулятор ipv4]([url](https://ipmeter.ru/))
+    https://www.coderstool.com/ipv6-subnet-calculator
+drawio
 
-
-[калькулятор ipv6]([url](https://www.coderstool.com/ipv6-subnet-calculator))
-
-
-
-[drawio]([url](https://app.diagrams.net/))
-
+    https://app.diagrams.net/
     
 )
 
@@ -58,18 +51,17 @@ d. Пул адресов для сети офиса HQ - не более 64
 
     [root@localhost ~]# hostnamectl set-hostname <NAME>
     [root@localhost ~]# exec bash
-NAME - имя устройства
-exec bash — перезапуск оболочки bash для отображения нового хостнейма
-
-Для устройств BR-SRV и CLI желательно сразу установить полное доменное имя. Потребуется для ввода этих машин в домен во второй части задания.
-
-Например:
-ISP: isp
-CLI: cli.hq.work
-HQ-R: hq-r.hq.work
-HQ-SRV: hq-srv.hq.work
-BR-R: br-r.branch.work
-BR-SRV: br-srv.branch.wor
+> [!NOTE]
+>    NAME - имя устройства
+>    exec bash — перезапуск оболочки bash для отображения нового хостнейма
+>    Для устройств BR-SRV и CLI желательно сразу установить полное доменное имя. Потребуется для ввода этих машин в домен во второй части задания.
+>    Например:
+>    ISP: isp
+>    CLI: cli.hq.work
+>    HQ-R: hq-r.hq.work
+>    HQ-SRV: hq-srv.hq.work
+>    BR-R: br-r.branch.work
+>    BR-SRV: br-srv.branch.wor
 
 Пример:
 
