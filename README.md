@@ -1,5 +1,20 @@
 # ssa2004demo
 
+Оценочные материалы демонстрационного экзамена 2024 года 09.02.06 «Сетевое и системное администрирование»
+https://bom.firpo.ru/
+
+
+КОД 09.02.06-1-2024 Том 1
+https://bom.firpo.ru/file/9791/%D0%9A%D0%9E%D0%94%2009.02.06-1-2024%20%D0%A2%D0%BE%D0%BC%201.pdf
+
+Задание Модуль 1
+http://wiki.prcit.ru/Demo-2024/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C-1
+
+
+В данном варианте решения предполагается использовать RedOS 7.3.4 Сервер минимальный и RedOS 7.3.4 Рабочая станция
+https://files.red-soft.ru/redos/7.3/x86_64/iso/redos-MUROM-7.3.4-20231220.0-Everything-x86_64-DVD1.iso
+
+
 
 калькулятор ipv4
 https://ipmeter.ru/
@@ -45,6 +60,7 @@ BR-R: br-r.branch.work
 BR-SRV: br-srv.branch.wor
 
 Пример:
+
 ![1-1](https://github.com/be2glaz/ssa2004demo/assets/89695370/cb447ca2-2e79-496b-8643-97fe1d349fe8)
 
 
