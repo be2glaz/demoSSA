@@ -529,6 +529,10 @@ BR-R
 
 ## 1.3.Настройте автоматическое распределение IP-адресов на роутере HQ-R
 
+<details>
+<summary>ТЫКНИ</summary>
+
+
 ### Задание
 #### Настройте автоматическое распределение IP-адресов на роутере HQ-R.
 - a. Учтите, что у сервера должен быть зарезервирован адрес.
@@ -616,9 +620,89 @@ BR-R
 
 > Вы можете использовать клавиши Ctrl + K, которые вырезают всю строку
 
+![2-11(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/7c4d8d9d-1640-4be8-a776-43e21752c314)
+
+> Блок host комментируем. Для резервирования IPv6 требуется получить dhcp6.client-id.
+
+> dhcp6.client-id можно получить после запуска и получения клиентом (HQ-SRV) адреса.
+
+Запускаем и добавляем в автозагрузку службу dhcpd6
+
+    # systemctl enable --now dhcpd6
+> Перезагружаем сетевой интерфейс на HQ-SRV
+
+Просматриваем журнал и ищем необходимый ```"DUID"``` для того, чтобы зарезервировать IPv6 адрес
+
+![2-12](https://github.com/be2glaz/ssa2004demo/assets/89695370/0c92441d-7f1a-470c-ad3e-6aaae618f441)
+
+Этот ```DUID``` добавляем в host-identifier option при настройке HQ-R как DHCP сервера для IPv6. Снимаем коментарии с блока host.
+
+![2-13](https://github.com/be2glaz/ssa2004demo/assets/89695370/1739f035-93d5-49c3-b7a6-91cb32bb5cd3)
+
+Перезагружаем службу dhcpd6
+
+    # systemctl restart dhcpd6
+Отключаем и включаем сетевой интерфейс на HQ-R и HQ-SRV и проверяем:
+
+![2-14](https://github.com/be2glaz/ssa2004demo/assets/89695370/6f7e60fe-8214-43ef-b405-d5d39d1cf472)
+
+#### Установка и настройка RA (Router Advertisement)
+> Шлюз на HQ-SRV для IPv4 раздается автоматически , за это отвечает параметр option routers в настройках dhcpd.conf
+> 
+> Для IPv6 такого параметра нет, шлюзы IPv6 выдаются маршрутизаторами средствами RA (Router Advertisement)
+
+> Установку и настройку RA производим на HQ-R
+
+Установливаем пакет ```radvd```:
+
+    # dnf install -y radvd
+Заходим в файл ```/etc/sysctl.conf```
+
+    # nano /etc/sysctl.conf
+Добавляем строку
+
+    net.ipv6.conf.enp0s8.accept_ra=2
+Открываем файл конфигурации ```radvd```. По умолчанию находится в ```/etc/radvd.conf```:
+
+    nano /etc/radvd.conf
+Приводим его к следующему виду:
+
+![2-15(2)](https://github.com/be2glaz/ssa2004demo/assets/89695370/395d8332-e709-4379-8eba-f5f8871e044e)
+
+Параметр ```prefix``` – прописываем свои параметры
+
+Перезапускаем ```dhcpd6.service```
+
+    systemctl restart dhcpd6
+Запускаем и добавляем в автозагрузку ```radvd```:
+
+    systemctl enable --now radvd
+
+#### Настройка на HQ-SRV
+> Через nmtui изменяем режим КОНФИГУРАЦИЯ IPv6 с <Автоматически (только DHCP)> на <Автоматически>
+
+> Отключаем и включаем сетевой интерфейс на HQ-R и HQ-SRV и проверяем
+
+</details>
+
+#### Проверка
 
 
+<details>
+<summary>ТЫКНИ</summary>
+##### IPv4
+    
+![2-16](https://github.com/be2glaz/ssa2004demo/assets/89695370/b76901e6-b5e2-4e43-b21d-91919912a1c2)
 
+##### IPv6
+
+![2-17](https://github.com/be2glaz/ssa2004demo/assets/89695370/d9dfe595-03a0-494d-ae21-c74e4dfc7c7f)
 
 
 </details>
+</details>
+
+
+
+
+
