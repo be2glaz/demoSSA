@@ -1,22 +1,20 @@
 # ssa2004demo
 
-# Общая информация
+### Общая информация
 
-<details>
-  <summary>ТЫКНИ</summary>
 
-Оценочные материалы демонстрационного экзамена 2024 года 09.02.06 «Сетевое и системное администрирование»
+[Оценочные материалы демонстрационного экзамена 2024 года 09.02.06 «Сетевое и системное администрирование»](https://bom.firpo.ru/)
 
-    https://bom.firpo.ru/
+
 
 
 КОД 09.02.06-1-2024 Том 1
 
     https://bom.firpo.ru/file/9791/%D0%9A%D0%9E%D0%94%2009.02.06-1-2024%20%D0%A2%D0%BE%D0%BC%201.pdf
 
-Задание Модуль 1
+[Задание Модуль 1](http://wiki.prcit.ru/Demo-2024/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C-1)
 
-    http://wiki.prcit.ru/Demo-2024/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C-1
+    
 
 
 В данном варианте решения предполагается использовать RedOS 7.3.4 Сервер минимальный и RedOS 7.3.4 Рабочая станция
@@ -25,16 +23,16 @@
 
     
 
-калькулятор ipv4
+[калькулятор ipv4]([url](https://ipmeter.ru/))
 
-    https://ipmeter.ru/
-калькулятор ipv6
 
-    [https://ipmeter.ru/](https://www.coderstool.com/ipv6-subnet-calculator)
+[калькулятор ipv6]([url](https://www.coderstool.com/ipv6-subnet-calculator))
 
-drawio
 
-    https://app.diagrams.net/
+
+[drawio]([url](https://app.diagrams.net/))
+
+    
 )
 
 # Топология
