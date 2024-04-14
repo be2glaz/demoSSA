@@ -233,17 +233,100 @@ BR-SRV - 1 интерфейс в сторону BR-R
 
 
 #### Настройка nftables на ISP
-Данная настройка позволит получить доступ к сети Интернет с HQ-R и BR-R
+
+> Данная настройка позволит получить доступ к сети Интернет с HQ-R и BR-R
 
 Установка nftables
+
 Перед установкой необходимо убедиться что имеется доступ в интернет с ВМ ISP
 
-ping -c4 ya.ru
+    ping -c4 ya.ru
 Если ping проходит успешно то устанавливаем nftables
 
-# dnf install -y nftables
+    # dnf install -y nftables
 
+#### Настройка nftables
+По умолчанию создаются несколько примеров файлов для работы с nftables в директории /etc/ nftables/.
 
+Настройка с использованием собственного файла настроек
+
+Можно не использовать ни один из файлов примеров, а написать свой.
+
+Создаем и открываем файл
+
+    # nano /etc/nftables/isp.nft
+Прописываем следующие строки
+
+    table inet my_nat {
+            chain my_masquerade {
+            type nat hook postrouting priority srcnat;
+            oifname "ens18" masquerade
+            }
+    }
+где ```ens18``` - публичный интерфейс ISP (смотрящий в Интернет)
+
+Затем необходимо включить использование данного файла в ```sysconfig``` , по умолчанию ```nftables``` не читает ни один из конфигурационных файлов в ```/etc/nftables```
+
+    # nano /etc/sysconfig/nftables.conf
+Ниже строки начинающейся на ```include```, прописываем строку
+
+    include "/etc/nftables/isp.nft"
+Запуск и добавление в автозагрузку сервиса ```nftables```
+
+    # systemctl enable --now nftables
+> При успешной и правильной настройке машины ```HQ-R``` и ```BR-R``` получат выход в Интернет
+
+> На устройствах ```HQ-R``` и ```BR-R``` необходимо произвести настройку ```Nftables``` аналогичным способом для доступа HQ-SRV и BR-SRV к сети Интернет
+
+### Настройка nftables на HQ-R
+Установка nftables
+
+    # dnf install -y nftables
+Создаем и открываем фалй
+
+    # nano /etc/nftables/hq-r.nft
+Прописываем следующие строки
+
+    table inet my_nat {
+            chain my_masquerade {
+            type nat hook postrouting priority srcnat;
+            oifname "ens18" masquerade
+            }
+    }
+Включаем использование данного файла в ```sysconfig```
+
+    # nano /etc/sysconfig/nftables.conf
+Ниже строки начинающейся на ```include```, прописываем строку
+
+    include "/etc/nftables/hq-r.nft"
+Запуск и добавление в автозагрузку сервиса ```nftables```
+
+    # systemctl enable --now nftables
+
+### Настройка nftables на BR-R
+Установка nftables
+
+    # dnf install -y nftables
+Создаем и открываем файл
+
+    # nano /etc/nftables/br-r.nft
+Прописываем следующие строки
+
+    table inet my_nat {
+            chain my_masquerade {
+            type nat hook postrouting priority srcnat;
+            oifname "ens18" masquerade
+            }
+    }
+Включаем использование данного файла в ```sysconfig```
+
+    # nano /etc/sysconfig/nftables.conf
+Ниже строки начинающейся на ```include```, прописываем строку
+
+    include "/etc/nftables/br-r.nft"
+Запуск и добавление в автозагрузку сервиса ```nftables```
+
+    # systemctl enable --now nftables
 
 
 
